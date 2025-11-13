@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blogs",
+  "info": {
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "blog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "content": {
+      "type": "blocks",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "category": {
+      "type": "string"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "publish_date": {
+      "type": "datetime"
+    },
+    "author_name": {
+      "type": "string",
+      "default": "Khalil AlSamadi"
+    }
+  }
+}

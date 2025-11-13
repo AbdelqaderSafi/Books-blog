@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "stores",
+  "info": {
+    "singularName": "store",
+    "pluralName": "stores",
+    "displayName": "Store"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ProductName": {
+      "type": "string"
+    },
+    "Slug": {
+      "type": "uid"
+    },
+    "Short_Description": {
+      "type": "string"
+    },
+    "Full_Description": {
+      "type": "blocks"
+    },
+    "Price": {
+      "type": "decimal"
+    },
+    "Images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Category": {
+      "type": "enumeration",
+      "enum": [
+        "Cup",
+        "Shirt",
+        "Hat"
+      ]
+    },
+    "Is_Available": {
+      "type": "boolean",
+      "default": true
+    },
+    "Featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "Store_link": {
+      "type": "string"
+    }
+  }
+}

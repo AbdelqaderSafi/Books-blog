@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "publishing_houses",
+  "info": {
+    "singularName": "publishing-house",
+    "pluralName": "publishing-houses",
+    "displayName": "Publishing House"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Name"
+    },
+    "Logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Website": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "blocks"
+    }
+  }
+}

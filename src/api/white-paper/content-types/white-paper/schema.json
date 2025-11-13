@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "white_papers",
+  "info": {
+    "singularName": "white-paper",
+    "pluralName": "white-papers",
+    "displayName": "white-papers"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "blocks",
+      "required": true
+    },
+    "file": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "publish_date": {
+      "type": "datetime"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
