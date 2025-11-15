@@ -31,9 +31,6 @@
         "videos",
         "audios"
       ]
-    },
-    "publish_date": {
-      "type": "date"
     }
   }
 }
