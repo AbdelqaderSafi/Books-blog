@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار Strapi API</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #5568d3;
+        }
+        
+        button:active {
+            transform: scale(0.98);
+        }
+        
+        .endpoints {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .endpoint-btn {
+            padding: 15px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: right;
+        }
+        
+        .endpoint-btn:hover {
+            background: #e9ecef;
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+        
+        .endpoint-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .status.loading {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .result {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+            direction: ltr;
+        }
+        
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 اختبار Strapi API</h1>
+        
+        <div class="controls">
+            <input 
+                type="text" 
+                id="apiUrl" 
+                placeholder="رابط API (مثال: https://your-app.up.railway.app/api)"
+                value="http://localhost:1337/api"
+            />
+            <button onclick="saveApiUrl()">💾 حفظ الرابط</button>
+        </div>
+        
+        <div class="endpoints">
+            <div class="endpoint-btn" onclick="testEndpoint('/blogs')">
+                📝 المدونات (Blogs)
+            </div>
+            <div class="endpoint-btn" onclick="testEndpoint('/books')">
+                📚 الكتب (Books)
+            </div>
+            <div class="endpoint-btn" onclick="testEndpoint('/white-papers')">
+                📄 الأوراق البحثية
+            </div>
+            <div class="endpoint-btn" onclick="testEndpoint('/authors')">
+                👤 معلومات الكاتب
+            </div>
+            <div class="endpoint-btn" onclick="testEndpoint('/homepage')">
+                🏠 الصفحة الرئيسية
+            </div>
+            <div class="endpoint-btn" onclick="testEndpoint('/stores')">
+                🛒 المتجر
+            </div>
+            <div class="endpoint-btn" onclick="testEndpoint('/publishing-houses')">
+                🏢 دور النشر
+            </div>
+            <div class="endpoint-btn" onclick="testEndpoint('/blogs?populate=*')">
+                📝 المدونات + الصور
+            </div>
+        </div>
+        
+        <div id="status" class="status hidden"></div>
+        
+        <div class="result">
+            <pre id="result">اضغط على أحد الأزرار أعلاه لاختبار API</pre>
+        </div>
+    </div>
+    
+    <script>
+        let currentApiUrl = localStorage.getItem('apiUrl') || 'http://localhost:1337/api';
+        document.getElementById('apiUrl').value = currentApiUrl;
+        
+        function saveApiUrl() {
+            currentApiUrl = document.getElementById('apiUrl').value;
+            localStorage.setItem('apiUrl', currentApiUrl);
+            showStatus('تم حفظ الرابط بنجاح ✅', 'success');
+        }
+        
+        function showStatus(message, type) {
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = message;
+            statusEl.className = `status ${type}`;
+            statusEl.classList.remove('hidden');
+            
+            if (type === 'success') {
+                setTimeout(() => {
+                    statusEl.classList.add('hidden');
+                }, 3000);
+            }
+        }
+        
+        async function testEndpoint(endpoint) {
+            const resultEl = document.getElementById('result');
+            
+            // تفعيل الزر
+            document.querySelectorAll('.endpoint-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            showStatus('جاري الاتصال بالـ API...', 'loading');
+            
+            const url = `${currentApiUrl}${endpoint}`;
+            
+            try {
+                const startTime = Date.now();
+                const response = await fetch(url);
+                const endTime = Date.now();
+                const duration = endTime - startTime;
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                const result = {
+                    success: true,
+                    url: url,
+                    status: response.status,
+                    duration: `${duration}ms`,
+                    dataCount: Array.isArray(data.data) ? data.data.length : (data.data ? 1 : 0),
+                    response: data
+                };
+                
+                resultEl.textContent = JSON.stringify(result, null, 2);
+                showStatus(`✅ نجح الاتصال! (${duration}ms) - ${result.dataCount} عنصر`, 'success');
+                
+            } catch (error) {
+                const errorResult = {
+                    success: false,
+                    url: url,
+                    error: error.message,
+                    details: error.toString()
+                };
+                
+                resultEl.textContent = JSON.stringify(errorResult, null, 2);
+                showStatus(`❌ فشل الاتصال: ${error.message}`, 'error');
+            }
+        }
+        
+        // اختبار الاتصال عند تحميل الصفحة
+        window.onload = function() {
+            showStatus('جاهز للاختبار! اضغط على أي زر أعلاه', 'loading');
+            setTimeout(() => {
+                document.getElementById('status').classList.add('hidden');
+            }, 3000);
+        };
+    </script>
+</body>
+</html>
