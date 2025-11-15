@@ -40,10 +40,6 @@
       "type": "boolean",
       "default": true
     },
-    "Featured": {
-      "type": "boolean",
-      "default": false
-    },
     "Store_link": {
       "type": "string"
     }

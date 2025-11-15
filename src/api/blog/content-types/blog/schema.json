@@ -33,10 +33,6 @@
         "audios"
       ]
     },
-    "is_featured": {
-      "type": "boolean",
-      "default": false
-    },
     "author_name": {
       "type": "string",
       "default": "Khalil AlSamadi"

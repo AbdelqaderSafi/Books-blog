@@ -479,7 +479,6 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    is_featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'> &
       Schema.Attribute.Private;
@@ -629,7 +628,6 @@ export interface ApiStoreStore extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     Full_Description: Schema.Attribute.Blocks;
     Images: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
@@ -670,7 +668,6 @@ export interface ApiWhitePaperWhitePaper extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
-    is_featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
