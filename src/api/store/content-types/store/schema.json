@@ -36,14 +36,6 @@
         "audios"
       ]
     },
-    "Category": {
-      "type": "enumeration",
-      "enum": [
-        "Cup",
-        "Shirt",
-        "Hat"
-      ]
-    },
     "Is_Available": {
       "type": "boolean",
       "default": true

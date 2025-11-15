@@ -474,7 +474,6 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   attributes: {
     author_name: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Khalil AlSamadi'>;
-    category: Schema.Attribute.String;
     content: Schema.Attribute.Blocks & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -600,7 +599,6 @@ export interface ApiStoreStore extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Category: Schema.Attribute.Enumeration<['Cup', 'Shirt', 'Hat']>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
