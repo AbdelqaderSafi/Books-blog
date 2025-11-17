@@ -48,6 +48,26 @@
         "images",
         "files"
       ]
+    },
+    "author_name": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "Book_Link": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.link",
+      "repeatable": false,
+      "required": true
     }
   }
 }

@@ -21,10 +21,12 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
     "Slug": {
-      "type": "uid"
+      "type": "uid",
+      "required": true
     },
     "Short_Description": {
       "type": "string",
