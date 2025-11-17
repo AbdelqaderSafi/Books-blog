@@ -6,10 +6,7 @@ export interface SharedLink extends Struct.ComponentSchema {
     displayName: 'link';
     icon: 'arrowRight';
   };
-  attributes: {
-    Label: Schema.Attribute.String;
-    URL: Schema.Attribute.String;
-  };
+  attributes: {};
 }
 
 declare module '@strapi/strapi' {

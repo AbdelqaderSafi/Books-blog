@@ -26,7 +26,8 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
     "description": {
       "type": "blocks",
@@ -58,15 +59,13 @@
       },
       "required": true
     },
-    "Book_Link": {
-      "type": "component",
+    "book_link": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "shared.link",
-      "repeatable": false,
       "required": true
     }
   }
