@@ -34,7 +34,8 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
     "photo": {
       "type": "media",
