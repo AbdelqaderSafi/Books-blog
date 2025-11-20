@@ -799,12 +799,6 @@ export interface ApiStoreStore extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Full_Description: Schema.Attribute.Blocks &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     Images: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
