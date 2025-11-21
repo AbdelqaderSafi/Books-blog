@@ -41,7 +41,8 @@
         }
       },
       "component": "shared.link",
-      "repeatable": true
+      "repeatable": true,
+      "required": true
     }
   }
 }

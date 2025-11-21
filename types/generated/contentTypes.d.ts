@@ -619,6 +619,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     FooterLinksColumn1: Schema.Attribute.Component<'shared.link', true> &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
