@@ -618,11 +618,10 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    FooterLinksColumn1: Schema.Attribute.Component<'shared.link', true> &
-      Schema.Attribute.Required &
+    Footer_Links_Column: Schema.Attribute.Component<'shared.link', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     hero_subtitle: Schema.Attribute.String &

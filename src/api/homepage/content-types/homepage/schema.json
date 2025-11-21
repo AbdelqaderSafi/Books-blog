@@ -33,16 +33,16 @@
       },
       "required": true
     },
-    "FooterLinksColumn1": {
+    "Footer_Links_Column": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         }
       },
       "component": "shared.link",
-      "repeatable": true,
-      "required": true
+      "repeatable": false,
+      "required": false
     }
   }
 }
