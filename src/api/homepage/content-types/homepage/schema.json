@@ -23,15 +23,16 @@
       "type": "string",
       "required": true
     },
-    "links": {
+    "footer_links": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "shared.link",
-      "repeatable": false
+      "component": "shared.url",
+      "repeatable": true,
+      "required": false
     }
   }
 }

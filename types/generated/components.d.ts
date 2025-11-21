@@ -1,9 +1,9 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface SharedLink extends Struct.ComponentSchema {
-  collectionName: 'components_shared_links';
+export interface SharedUrl extends Struct.ComponentSchema {
+  collectionName: 'components_shared_urls';
   info: {
-    displayName: 'link';
+    displayName: 'url';
     icon: 'arrowRight';
   };
   attributes: {};
@@ -12,7 +12,7 @@ export interface SharedLink extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'shared.link': SharedLink;
+      'shared.url': SharedUrl;
     }
   }
 }

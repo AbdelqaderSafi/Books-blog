@@ -618,14 +618,14 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    hero_subtitle: Schema.Attribute.String & Schema.Attribute.Required;
-    hero_title: Schema.Attribute.String & Schema.Attribute.Required;
-    links: Schema.Attribute.Component<'shared.link', false> &
+    footer_links: Schema.Attribute.Component<'shared.url', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
+    hero_subtitle: Schema.Attribute.String & Schema.Attribute.Required;
+    hero_title: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

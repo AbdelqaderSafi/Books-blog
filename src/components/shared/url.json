@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_shared_links",
+  "collectionName": "components_shared_urls",
   "info": {
-    "displayName": "link",
+    "displayName": "url",
     "icon": "arrowRight"
   },
   "options": {},
