@@ -6,7 +6,10 @@ export interface SharedUrl extends Struct.ComponentSchema {
     displayName: 'url';
     icon: 'arrowRight';
   };
-  attributes: {};
+  attributes: {
+    Label: Schema.Attribute.String;
+    URL: Schema.Attribute.String;
+  };
 }
 
 declare module '@strapi/strapi' {

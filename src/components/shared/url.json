@@ -5,6 +5,13 @@
     "icon": "arrowRight"
   },
   "options": {},
-  "attributes": {},
+  "attributes": {
+    "Label": {
+      "type": "string"
+    },
+    "URL": {
+      "type": "string"
+    }
+  },
   "config": {}
 }
