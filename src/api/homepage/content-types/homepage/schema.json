@@ -17,23 +17,13 @@
   "attributes": {
     "hero_title": {
       "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "required": true
     },
     "hero_subtitle": {
       "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "required": true
     },
-    "Footer_Links_Column": {
+    "links": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
@@ -41,8 +31,7 @@
         }
       },
       "component": "shared.link",
-      "repeatable": false,
-      "required": false
+      "repeatable": false
     }
   }
 }
